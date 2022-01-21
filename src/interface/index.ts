@@ -22,4 +22,11 @@ export interface StateContext {
 
 export interface ContexProps {
     children: any,
-}; 
+};
+
+export interface UserItemI {
+    name: string
+    last_name: string
+    age: number
+    onClick: Function | any
+};
