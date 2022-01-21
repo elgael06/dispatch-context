@@ -35,9 +35,28 @@ const FormRegister = () => {
     return (<form onSubmit={submit} onReset={onReset} style={{ width: 300, padding: 10 }}>
         <h2>Register:</h2>
         <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'stretch' }}>
-            <input name='name' value={name} onChange={handleName} placeholder="type name..." />
-            <input name='last_name' value={last_name} onChange={handleLastName} placeholder="type last name..." />
-            <input name='age' value={age} onChange={handleAge} placeholder="type age..." type='number' />
+            <input
+                required
+                name='name'
+                value={name}
+                onChange={handleName}
+                placeholder="type name..."
+            />
+            <input
+                required
+                name='last_name'
+                value={last_name}
+                onChange={handleLastName}
+                placeholder="type last name..."
+            />
+            <input
+                required
+                name='age'
+                value={age}
+                onChange={handleAge}
+                placeholder="type age..."
+                type='number'
+            />
         </div>
         <hr />
         <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
