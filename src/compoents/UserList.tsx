@@ -6,10 +6,8 @@ import UserItem from "./UserItem";
 
 const UserList = () => {
     const {
-        state: {
-            tasks
-        },
-        dispatch
+        state: { tasks, },
+        dispatch,
     }: StateContext = useContext<StateContext>(Context);
 
     const removeForIdList = (id: number) => () => {
