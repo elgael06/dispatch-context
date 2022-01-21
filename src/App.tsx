@@ -4,8 +4,6 @@ import FormRegister from './compoents/FormRegister'
 import UserList from './compoents/UserList'
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
     <ContextApp >
       <h1>  User Register </h1>
@@ -17,4 +15,4 @@ function App() {
   )
 }
 
-export default App
+export default App;
