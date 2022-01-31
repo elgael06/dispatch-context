@@ -7,7 +7,7 @@ export interface UserI {
 };
 
 export interface InitialState extends UserI {
-    tasks: UserI[],
+    users: UserI[],
 };
 
 export interface Actions {

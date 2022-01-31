@@ -6,7 +6,7 @@ import UserItem from "./UserItem";
 
 const UserList = () => {
     const {
-        state: { tasks, },
+        state: { users, },
         dispatch,
     }: StateContext = useContext<StateContext>(Context);
 
@@ -17,9 +17,9 @@ const UserList = () => {
     return (<div style={{ width: 400 }}>
         <h2>User List</h2>
         <div>
-            {tasks.length === 0
+            {users.length === 0
                 ? <div>No users register ...</div>
-                : tasks.map((item, index) => (<UserItem key={index}
+                : users.map((item, index) => (<UserItem key={index}
                     name={item.name}
                     last_name={item.last_name}
                     age={item.age}
