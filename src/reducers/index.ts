@@ -14,19 +14,19 @@ const reducer = (state: InitialState = initialState, action: Actions): InitialSt
             const age = parseInt(action.payload.toString());
             return { ...state, age, };
         case ADD_LIST:
-            const tasks: UserI[] = [...state.tasks];
-            tasks.push({
+            const users: UserI[] = [...state.users];
+            users.push({
                 name: state.name,
                 last_name: state.last_name,
                 age: state.age,
             })
-            return { ...state, tasks, };
+            return { ...state, users, };
 
         case RM_LIST:
             if (typeof action.payload === 'number') {
-                const list: UserI[] = [...state.tasks];
-                const tasks = list.filter((item, index) => action.payload !== index);
-                return { ...state, tasks, };
+                const list: UserI[] = [...state.users];
+                const users = list.filter((item, index) => action.payload !== index);
+                return { ...state, users, };
             }
         case CLR_DATA:
             return { ...state, name: '', last_name: '', age: 0, }

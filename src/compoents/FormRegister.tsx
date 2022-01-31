@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { addList, changeAge, changeLastName, changeName, clearData } from "../actions";
 import { Context } from "../context";
-import { StateContext } from "../interface";
+import { StateContext, EventOptions } from "../interface";
 
 const FormRegister = () => {
     const {
@@ -13,14 +13,15 @@ const FormRegister = () => {
         dispatch
     }: StateContext = useContext<StateContext>(Context);
 
-    const handleName = (e: any) => {
-        dispatch(changeName(e.target.value));
-    };
-    const handleLastName = (e: any) => {
-        dispatch(changeLastName(e.target.value));
-    };
-    const handleAge = (e: any) => {
-        dispatch(changeAge(e.target.value));
+    const handleChange = (e: any) => {
+        const { value, name = 'name' } = e.target;
+        const event: EventOptions = {
+            'name': changeName(value),
+            'last_name': changeLastName(value),
+            'age': changeAge(value),
+        };
+        const action = event[name];
+        action && dispatch(action);
     };
 
     const submit = (e: any) => {
@@ -35,31 +36,36 @@ const FormRegister = () => {
     return (<form onSubmit={submit} onReset={onReset} style={{ width: 300, padding: 10 }}>
         <h2>Register:</h2>
         <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'stretch' }}>
-            <input
-                required
-                name='name'
-                value={name}
-                onChange={handleName}
-                placeholder="type name..."
-            />
-            <input
-                required
-                name='last_name'
-                value={last_name}
-                onChange={handleLastName}
-                placeholder="type last name..."
-            />
-            <input
-                required
-                name='age'
-                value={age}
-                onChange={handleAge}
-                placeholder="type age..."
-                type='number'
-            />
+            {
+                [
+                    {
+                        name: 'name',
+                        value: name,
+                        placeholder: "type name..."
+                    },
+                    {
+                        name: 'last_name',
+                        value: last_name,
+                        placeholder: "type last name...",
+                    },
+                    {
+                        name: 'age',
+                        value: age,
+                        placeholder: "type age...",
+                        type: 'number',
+                    },
+                ].map(input => (<input
+                    key={input.name}
+                    required
+                    onChange={handleChange}
+                    {...input}
+                />))
+            }
         </div>
         <hr />
-        <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
+        <div style={{
+            display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between',
+        }}>
             <button type="reset" >reset</button>
             <button type="submit" >add</button>
         </div>

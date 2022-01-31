@@ -4,7 +4,7 @@ const initialState: InitialState = {
     name: '',
     last_name: '',
     age: 0,
-    tasks: [],
+    users: [],
 };
 
 export default initialState;

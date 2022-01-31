@@ -7,7 +7,7 @@ export interface UserI {
 };
 
 export interface InitialState extends UserI {
-    tasks: UserI[],
+    users: UserI[],
 };
 
 export interface Actions {
@@ -30,3 +30,7 @@ export interface UserItemI {
     age: number
     onClick: Function | any
 };
+
+export type EventOptions = {
+    [key: string]: any
+}
