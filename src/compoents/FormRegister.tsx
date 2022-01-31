@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { addList, changeAge, changeLastName, changeName, clearData } from "../actions";
 import { Context } from "../context";
-import { StateContext } from "../interface";
+import { StateContext, EventOptions } from "../interface";
 
 const FormRegister = () => {
     const {
@@ -15,12 +15,13 @@ const FormRegister = () => {
 
     const handleChange = (e: any) => {
         const { value, name = 'name' } = e.target;
-        const event = {
+        const event: EventOptions = {
             'name': changeName(value),
             'last_name': changeLastName(value),
             'age': changeAge(value),
         };
-        event[name] && dispatch(event[name]);
+        const action = event[name];
+        action && dispatch(action);
     };
 
     const submit = (e: any) => {

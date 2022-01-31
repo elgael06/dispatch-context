@@ -30,3 +30,7 @@ export interface UserItemI {
     age: number
     onClick: Function | any
 };
+
+export type EventOptions = {
+    [key: string]: any
+}
